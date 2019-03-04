@@ -1,13 +1,13 @@
 # Email Template Editor
 
-The project uses Flask/Python3 and npm (node v11.6.0).
+The project uses Flask/Python3 and React (node v11.6.0).
 
 Throws a `TemplateSyntaxError` if the template syntax is invalid and displays a warning. The server will return a 400 with the message "Validation failed".
 
 
 ## Getting started:
 
-You need to run two separate servers; one for Flask backend, and one for React frontend.
+You need to run two separate servers; one for flask backend, and one for react frontend.
 
 Refer to the installation instructions.
 
