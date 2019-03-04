@@ -1,0 +1,12 @@
+Click==7.0
+Flask==1.0.2
+Flask-Cors==3.0.7
+Flask-SendGrid==0.6
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.0
+python-http-client==3.1.0
+sendgrid==5.6.0
+simplejson==3.16.0
+six==1.12.0
+Werkzeug==0.14.1
