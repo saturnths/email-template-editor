@@ -17,9 +17,11 @@ app.config.from_object('config.DevelopmentConfig')
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
-# Registers the InvalidUsage error handler.
 @app.errorhandler(InvalidUsage)
 def handle_invalid_usage(error):
+    """
+    Registers the InvalidUsage error handler.
+    """
     response = jsonify(error.to_dict())
     response.status_code = error.status_code
     return response
@@ -29,9 +31,13 @@ def throw_validation_error():
     raise InvalidUsage('Validation failed', status_code=400)
 
 
-# Handles the fetching of the template and passes along related fields,
-# based on whether in preview or send mode.
 def get_template(validate_email):
+    """
+    Handles the fetching of the template and passes along related fields,
+    based on whether in preview or send mode.
+    
+    :param validate_email: boolean, determines if email should be validated.
+    """
     email_reg = r"[^@]+@[^@]+\.[^@]+"
 
     req_data = request.get_json()
@@ -46,8 +52,10 @@ def get_template(validate_email):
     return template, content, fields, from_email, to_email
 
 
-# Do some validation and sanity checks. Verify email address correctness and template syntax.
 def validate(content, email_reg, from_email, to_email, validate_email, fields):
+    """
+    Does some validation and sanity checks. Verifies email address correctness and template syntax.
+    """
     env = Environment()
 
     try:
@@ -60,8 +68,10 @@ def validate(content, email_reg, from_email, to_email, validate_email, fields):
         throw_validation_error()
 
 
-# Sanitizes HTML and replaces newlines by <br/> tags.
 def get_body(req_data):
+    """
+    Sanitizes HTML and replaces newlines by <br/> tags.
+    """
     body = str(escape(req_data['body']))\
         .replace('&#34;', '')\
         .replace('\\n', '<br/>')
